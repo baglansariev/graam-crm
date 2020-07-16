@@ -30,7 +30,7 @@ class ClientController extends Controller
         $data = [
             'status' => false,
             'message' => 'Произошла ошибка',
-            'manager' => false,
+            'manager_id' => false,
         ];
 
         if ($manager = Manager::getManagerForClient()) {
@@ -42,12 +42,7 @@ class ClientController extends Controller
             $data = [
                 'status' => true,
                 'message' => 'Менеджер успешно назначен',
-                'manager' => [
-                    'name' => $manager->name,
-                    'email' => $manager->email,
-                    'phone' => $manager->phone,
-                    'photo' => $manager->photo,
-                ]
+                'manager_id' => $manager->id,
             ];
         }
 
