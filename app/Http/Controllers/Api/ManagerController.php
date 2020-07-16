@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Manager;
 
 class ManagerController extends Controller
 {
@@ -44,9 +45,26 @@ class ManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) :void
+    public function get(Request $request, $id) :void
     {
-        echo response()->json(['manager_id' => $id])->content();
+        $data = [];
+
+        if ($manager = Manager::find($id)) {
+
+            $host = $request->getSchemeAndHttpHost();
+
+            $data = [
+                'status' => true,
+                'manager' => [
+                    'name' => $manager->name,
+                    'phone' => $manager->phone,
+                    'email' => $manager->email,
+                    'photo' => $host . '/' . $manager->photo,
+                ],
+            ];
+        }
+
+        echo response()->json($data)->content();
     }
 
     /**
