@@ -18,3 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('manager', 'Api\ManagerController');
+Route::get('/test', 'Api\ClientController@getManager');
+
+Route::prefix('client')->group(function () {
+    Route::get('/create/{id}', 'Api\ClientController@create');
+    Route::get('/', 'Api\ClientController@index');
+});

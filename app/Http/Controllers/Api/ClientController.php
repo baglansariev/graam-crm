@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Manager;
+use phpDocumentor\Reflection\Types\Integer;
 
-class ManagerController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -22,9 +25,33 @@ class ManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id) : void
     {
-        //
+        $data = [
+            'status' => false,
+            'message' => 'Произошла ошибка',
+            'manager' => false,
+        ];
+
+        if ($manager = Manager::getManagerForClient()) {
+
+            $manager->client()->create([
+                'external_id' => $id,
+            ]);
+
+            $data = [
+                'status' => true,
+                'message' => 'Менеджер успешно назначен',
+                'manager' => [
+                    'name' => $manager->name,
+                    'email' => $manager->email,
+                    'phone' => $manager->phone,
+                    'photo' => $manager->photo,
+                ]
+            ];
+        }
+
+        echo response()->json($data)->content();
     }
 
     /**
@@ -44,9 +71,9 @@ class ManagerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) :void
+    public function show($id)
     {
-        echo response()->json(['manager_id' => $id])->content();
+        //
     }
 
     /**
