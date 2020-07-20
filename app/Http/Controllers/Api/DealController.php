@@ -52,9 +52,8 @@ class DealController extends Controller
 
     public function getByClient($client_id)
     {
-        if ($client = Client::whereExternalId($client_id)) {
-            $data   = [];
-            $client = $client->get()[0];
+        if ($client = Client::whereExternalId($client_id)->get()[0]) {
+            $data = [];
 
             foreach ($client->deals as $deal) {
                 $data['deals'][] = [
@@ -65,9 +64,14 @@ class DealController extends Controller
                 ];
             }
 
-            echo response()->json($data)->content();
-
         }
+        else {
+            $data = ['detail' => false];
+        }
+
+        echo response()->json($data)->content();
+        exit;
+
     }
 
     /**
