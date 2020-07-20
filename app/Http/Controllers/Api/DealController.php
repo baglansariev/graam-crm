@@ -52,7 +52,7 @@ class DealController extends Controller
 
     public function getByClient($client_id)
     {
-        if ($client = Client::whereExternalId($client_id)) {
+        if ($client = Client::whereExternalId($client_id)->get()) {
 
             $data = [];
 
