@@ -52,10 +52,8 @@ class DealController extends Controller
 
     public function getByClient($client_id)
     {
-        $client = Client::whereExternalId($client_id)->get();
-        if (isset($client[0])) {
-            $data   = [];
-            $client = $client[0];
+        whereExternalId($client_id)->get();
+        if ($client = Client::find($client_id)) {
 
             foreach ($client->deals as $deal) {
                 $data[] = [
