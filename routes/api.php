@@ -30,3 +30,6 @@ Route::prefix('deal')->group(function () {
 Route::prefix('offer')->group(function () {
     Route::get('/product/{name}/{type}/{weight}', 'Api\OfferController@getOffers');
 });
+Route::prefix('currency')->group(function () {
+    Route::get('/get-rates', 'Api\CurrencyController@getRates');
+});

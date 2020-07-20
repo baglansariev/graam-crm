@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $fillable = [/*'external_id',*/'id', 'manager_id'];
+    protected $fillable = ['id', 'manager_id'];
 
     public function manager()
     {
