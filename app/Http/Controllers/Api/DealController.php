@@ -52,6 +52,7 @@ class DealController extends Controller
 
     public function getByClient($client_id)
     {
+        $data = [];
         if ($client = Client::find($client_id)) {
 
             foreach ($client->deals as $deal) {
@@ -64,9 +65,6 @@ class DealController extends Controller
                 ];
             }
 
-        }
-        else {
-            $data = false;
         }
 
         echo response()->json($data)->content();
