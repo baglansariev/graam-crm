@@ -68,7 +68,7 @@ class DealController extends Controller
 
         }
         else {
-            $data = ['detail' => false];
+            $data = ['deals' => false];
         }
 
         echo response()->json($data)->content();
