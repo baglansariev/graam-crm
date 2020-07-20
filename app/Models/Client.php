@@ -12,4 +12,9 @@ class Client extends Model
     {
         return $this->belongsTo('App\Models\Manager', 'manager_id');
     }
+
+    public function deals()
+    {
+        return $this->hasMany('App\Models\Deal', 'client_id');
+    }
 }
