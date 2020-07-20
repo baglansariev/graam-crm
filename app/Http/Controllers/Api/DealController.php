@@ -58,7 +58,7 @@ class DealController extends Controller
             $client = $client[0];
 
             foreach ($client->deals as $deal) {
-                $data['deals'][] = [
+                $data[] = [
 
                     'name'          => $deal->name,
                     'created_at'    => $deal->created_at,
