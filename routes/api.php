@@ -27,3 +27,6 @@ Route::prefix('manager')->group(function () {
 Route::prefix('deal')->group(function () {
     Route::get('/client/{id}', 'Api\DealController@getByClient');
 });
+Route::prefix('offer')->group(function () {
+    Route::get('/product/{name}/{type}/{weight}', 'Api\OfferController@getOffers');
+});
