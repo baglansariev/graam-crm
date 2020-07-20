@@ -36,7 +36,8 @@ class ClientController extends Controller
         if ($manager = Manager::getManagerForClient()) {
 
             $manager->client()->create([
-                'external_id' => $id,
+//                'external_id' => $id,
+                'id' => $id,
             ]);
 
             $data = [
