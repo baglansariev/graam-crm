@@ -61,7 +61,7 @@ class DealController extends Controller
                 $data[] = [
 
                     'name'          => $deal->name,
-                    'created_at'    => $deal->created_at,
+                    'created_at'    => $deal->created_at->format('d.m.Y'),
                     'status'        => $deal->status->name,
 
                 ];
