@@ -35,4 +35,5 @@ Route::prefix('currency')->group(function () {
 });
 Route::prefix('feedback')->group(function () {
     Route::get('/sell-app', 'Api\FeedbackController@clientSellApp');
+    Route::get('/own-price', 'Api\FeedbackController@clientOwnPrice');
 });

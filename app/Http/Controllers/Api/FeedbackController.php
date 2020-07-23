@@ -20,8 +20,16 @@ class FeedbackController extends Controller
         }
     }
 
-    public function clientOwnPrice()
+    public function clientOwnPrice(Request $request)
     {
+        if ($request->has(['name', 'phone', 'text', 'price'])) {
 
+            // Операции с полученными данными
+
+            echo response()->json([
+                'status' => true,
+                'message' => 'Спасибо за вашу заявку! Наш менеджер скоро вам позвонит!',
+            ])->getContent();
+        }
     }
 }
