@@ -11,11 +11,12 @@ class FeedbackController extends Controller
     {
         if ($request->has(['name', 'phone', 'text'])) {
 
+            // Операции с полученными данными
+
             echo response()->json([
-                'name' => $request->get('name'),
-                'phone' => $request->get('phone'),
-                'text' => $request->get('text'),
-            ])->getContent();
+                    'status' => true,
+                    'message' => 'Спасибо за вашу заявку! Наш менеджер скоро вам позвонит!',
+                ])->getContent();
         }
     }
 
