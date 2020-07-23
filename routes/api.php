@@ -33,3 +33,6 @@ Route::prefix('offer')->group(function () {
 Route::prefix('currency')->group(function () {
     Route::get('/get-rates', 'Api\CurrencyController@getRates');
 });
+Route::prefix('feedback')->group(function () {
+    Route::get('/sell-app', 'Api\FeedbackController@clientSellApp');
+});
